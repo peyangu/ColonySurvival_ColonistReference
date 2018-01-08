@@ -1,0 +1,108 @@
+﻿<Controls:MetroWindow x:Class="ColonySurvivalColonistReference.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:ColonySurvivalColonistReference"
+        mc:Ignorable="d"
+        Title="Colony Survival - Colonist Reference -" Height="420" Width="800"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+                      Icon="/ColonySurvivalCraftsmanManagement;component/Resource/fabicon.ico">
+    <Grid>
+        <TextBlock Foreground="Blue" Margin="82,25,71,0" Opacity="{Binding Path=Model.WarterMarkOpacity}" VerticalAlignment="Top" Height="20" Text="steamLibrary/steamapps/common/Colony Survival/gamedata/savegames/各種セーブフォルダ/npc.jsonを選択"></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="82,25,0,0" TextWrapping="Wrap" Text="{Binding Model.JsonFilePath}" VerticalAlignment="Top" Height="20" Width="639"/>
+        <Button Content="参照" HorizontalAlignment="Left" Margin="721,10,0,0" VerticalAlignment="Top" Width="61" Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth3"
+	Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding Path=Model.ReferenceButtonClickCommand}"/>
+        <Button Command="{Binding Path=Model.ReloadCommand}"
+	Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+	ToolTip="MaterialDesignFloatingActionMiniButton" Margin="10,10,742,339">
+            <materialDesign:PackIcon
+		Width="36"
+		Height="36"
+		Kind="Reload" />
+        </Button>
+
+
+        <Label x:Name="berryfarmer" FontSize="15" Margin="0,79,675,280" Height="30">ベリーの農家:</Label>
+        <Label x:Name="guardslingerday" FontSize="15" Margin="0,109,675,250" Height="30">スリング兵(昼):</Label>
+        <Label x:Name="guardbowday" FontSize="15" Margin="0,139,675,220" Height="30">弓兵(昼):</Label>
+        <Label x:Name="guardcrossbowday" FontSize="15" Margin="0,169,675,190" Height="30">クロスボウ兵(昼):</Label>
+        <Label x:Name="guardmatchlockday" FontSize="15" Margin="0,199,675,160" Height="30">火縄銃兵(昼):</Label>
+        <Label x:Name="guardslingernight" FontSize="15" Margin="0,229,675,130" Height="30">スリング兵(夜):</Label>
+        <Label x:Name="guardbownight" FontSize="15" Margin="0,259,675,100" Height="30">弓兵(夜):</Label>
+        <Label x:Name="guardcrossbownight" FontSize="15" Margin="0,289,675,70" Height="30">クロスボウ兵(夜):</Label>
+        <Label x:Name="guardmatchlocknight" FontSize="15" Margin="0,319,675,40" Height="30">火縄銃兵(夜):</Label>
+        <Label x:Name="minerjob" FontSize="15" Margin="0,349,675,10" Height="30">鉱員:</Label>
+
+        <Label x:Name="forester" FontSize="15" Margin="200,79,476,280" Height="30">林業者:</Label>
+        <Label x:Name="flaxfarmer" FontSize="15" Margin="200,109,476,250" Height="30">亜麻農家:</Label>
+        <Label x:Name="alkanetfarmer" FontSize="15" Margin="200,139,476,220" Height="30">アルカネット農家:</Label>
+        <Label x:Name="hollyhockfarmer" FontSize="15" Margin="200,169,476,190" Height="30">タチアオイ農家:</Label>
+        <Label x:Name="wolfsbanefarm" FontSize="15" Margin="200,199,476,160" Height="30">トリカブト農家:</Label>
+        <Label x:Name="wheatfarmer" FontSize="15" Margin="200,229,476,130" Height="30">小麦の農家:</Label>
+        <Label x:Name="dyer" FontSize="15" Margin="200,259,476,100" Height="30">染色師:</Label>
+        <Label x:Name="stonemason" FontSize="15" Margin="200,289,476,70" Height="30">石工:</Label>
+        <Label x:Name="gunsmithjob" FontSize="15" Margin="200,319,476,40" Height="30">鉄砲鍛冶:</Label>
+        <Label x:Name="merchant" FontSize="15" Margin="200,349,476,10" Height="30">店:</Label>
+
+        <Label x:Name="minter" FontSize="15" Margin="400,79,285,280" Height="30">造幣局:</Label>
+        <Label x:Name="tailor" FontSize="15" Margin="400,109,285,250" Height="30">仕立て屋:</Label>
+        <Label x:Name="technologist" FontSize="15" Margin="400,139,285,220" Height="30">技術者:</Label>
+        <Label x:Name="kilnjob" FontSize="15" Margin="400,169,288,190" Height="30">窯職人:</Label>
+        <Label x:Name="fineryforgejob" FontSize="15" Margin="400,199,288,160" Height="30">精製炉:</Label>
+        <Label x:Name="woodcutter" FontSize="15" Margin="400,229,288,130" Height="30">薪割り:</Label>
+        <Label x:Name="bloomeryjob" FontSize="15" Margin="400,259,288,100" Height="30">塊鉄炉:</Label>
+        <Label x:Name="metalsmithjob" FontSize="15" Margin="400,289,288,70" Height="30">青銅の金床:</Label>
+        <Label x:Name="smelter" FontSize="15" Margin="400,319,288,40" Height="30">炉:</Label>
+        <Label x:Name="baker" FontSize="15" Margin="400,349,288,10" Height="30">パン職人:</Label>
+
+        <Label x:Name="grinder" FontSize="15" Margin="600,79,88,280" Height="30">小麦粉生産者:</Label>
+        <Label x:Name="scientist" FontSize="15" Margin="600,109,88,250" Height="30">科学者:</Label>
+        <Label x:Name="crafter" FontSize="15" Margin="600,139,88,220" Height="30">クラフター:</Label>
+
+        <TextBlock x:Name="berryfarmerColonist" FontSize="15" Margin="122,85,600,286" VerticalAlignment="Center" Text="{Binding Path=Model.BerryfarmerColonist}"></TextBlock>
+        <TextBlock x:Name="guardslingerdayColonist" FontSize="15" Margin="122,115,600,256" VerticalAlignment="Center" Text="{Binding Path=Model.GuardslingerdayColonist}"></TextBlock>
+        <TextBlock x:Name="guardbowdayColonist" FontSize="15" Margin="122,145,600,226" VerticalAlignment="Center" Text="{Binding Path=Model.GuardbowdayColonist}"></TextBlock>
+        <TextBlock x:Name="guardcrossbowdayColonist" FontSize="15" Margin="122,175,600,196" VerticalAlignment="Center" Text="{Binding Path=Model.GuardcrossbowdayColonist}"></TextBlock>
+        <TextBlock x:Name="guardmatchlockdayColonist" FontSize="15" Margin="122,205,600,166" VerticalAlignment="Center" Text="{Binding Path=Model.GuardmatchlockdayColonist}"></TextBlock>
+        <TextBlock x:Name="guardslingernightColonist" FontSize="15" Margin="122,235,600,136" VerticalAlignment="Center" Text="{Binding Path=Model.GuardslingernightColonist}"></TextBlock>
+        <TextBlock x:Name="guardbownightColonist" FontSize="15" Margin="122,265,600,106" VerticalAlignment="Center" Text="{Binding Path=Model.GuardbownightColonist}"></TextBlock>
+        <TextBlock x:Name="guardcrossbownightColonist" FontSize="15" Margin="122,295,600,76" VerticalAlignment="Center" Text="{Binding Path=Model.GuardcrossbownightColonist}"></TextBlock>
+        <TextBlock x:Name="guardmatchlocknightColonist" FontSize="15" Margin="122,325,600,46" VerticalAlignment="Center" Text="{Binding Path=Model.GuardmatchlocknightColonist}"></TextBlock>
+        <TextBlock x:Name="minerjobColonist" FontSize="15" Margin="122,355,600,16" VerticalAlignment="Center" Text="{Binding Path=Model.MinerjobColonist}"></TextBlock>
+
+        <TextBlock x:Name="foresterColonist" FontSize="15" Margin="322,85,400,286" VerticalAlignment="Center" Text="{Binding Path=Model.ForesterColonist}"></TextBlock>
+        <TextBlock x:Name="flaxfarmerColonist" FontSize="15" Margin="322,115,400,256" VerticalAlignment="Center" Text="{Binding Path=Model.FlaxfarmerColonist}"></TextBlock>
+        <TextBlock x:Name="alkanetfarmerColonist" FontSize="15" Margin="322,145,400,226" VerticalAlignment="Center" Text="{Binding Path=Model.AlkanetfarmerColonist}"></TextBlock>
+        <TextBlock x:Name="hollyhockfarmerColonist" FontSize="15" Margin="322,175,400,196" VerticalAlignment="Center" Text="{Binding Path=Model.HollyhockfarmerColonist}"></TextBlock>
+        <TextBlock x:Name="wolfsbanefarmColonist" FontSize="15" Margin="322,205,400,166" VerticalAlignment="Center" Text="{Binding Path=Model.WolfsbanefarmColonist}"></TextBlock>
+        <TextBlock x:Name="wheatfarmerColonist" FontSize="15" Margin="322,235,400,136" VerticalAlignment="Center" Text="{Binding Path=Model.WheatfarmerColonist}"></TextBlock>
+        <TextBlock x:Name="dyerColonist" FontSize="15" Margin="322,265,400,106" VerticalAlignment="Center" Text="{Binding Path=Model.DyerColonist}"></TextBlock>
+        <TextBlock x:Name="stonemasonColonist" FontSize="15" Margin="322,295,400,76" VerticalAlignment="Center" Text="{Binding Path=Model.StonemasonColonist}"></TextBlock>
+        <TextBlock x:Name="gunsmithjobColonist" FontSize="15" Margin="322,325,400,46" VerticalAlignment="Center" Text="{Binding Path=Model.GunsmithjobColonist}"></TextBlock>
+        <TextBlock x:Name="merchantColonist" FontSize="15" Margin="322,355,400,16" VerticalAlignment="Center" Text="{Binding Path=Model.MerchantColonist}"></TextBlock>
+
+        <TextBlock x:Name="minterColonist" FontSize="15" Margin="522,85,200,286" VerticalAlignment="Center" Text="{Binding Path=Model.MinterColonist}"></TextBlock>
+        <TextBlock x:Name="tailorColonist" FontSize="15" Margin="522,115,200,256" VerticalAlignment="Center" Text="{Binding Path=Model.TailorColonist}"></TextBlock>
+        <TextBlock x:Name="technologistColonist" FontSize="15" Margin="522,145,200,226" VerticalAlignment="Center" Text="{Binding Path=Model.TechnologistColonist}"></TextBlock>
+        <TextBlock x:Name="kilnjobColonist" FontSize="15" Margin="522,175,200,196" VerticalAlignment="Center" Text="{Binding Path=Model.KilnjobColonist}"></TextBlock>
+        <TextBlock x:Name="fineryforgejobColonist" FontSize="15" Margin="522,205,200,166" VerticalAlignment="Center" Text="{Binding Path=Model.FineryforgejobColonist}"></TextBlock>
+        <TextBlock x:Name="woodcutterColonist" FontSize="15" Margin="522,235,200,136" VerticalAlignment="Center" Text="{Binding Path=Model.WoodcutterColonist}"></TextBlock>
+        <TextBlock x:Name="bloomeryjobColonist" FontSize="15" Margin="522,265,200,106" VerticalAlignment="Center" Text="{Binding Path=Model.BloomeryjobColonist}"></TextBlock>
+        <TextBlock x:Name="metalsmithjobColonist" FontSize="15" Margin="522,295,200,76" VerticalAlignment="Center" Text="{Binding Path=Model.MetalsmithjobColonist}"></TextBlock>
+        <TextBlock x:Name="smelterColonist" FontSize="15" Margin="522,325,200,46" VerticalAlignment="Center" Text="{Binding Path=Model.SmelterColonist}"></TextBlock>
+        <TextBlock x:Name="bakerColonist" FontSize="15" Margin="522,355,200,16" VerticalAlignment="Center" Text="{Binding Path=Model.BakerColonist}"></TextBlock>
+
+        <TextBlock x:Name="grinderColonist" FontSize="15" Margin="722,85,0,286" VerticalAlignment="Center" Text="{Binding Path=Model.GrinderColonist}"></TextBlock>
+        <TextBlock x:Name="scientistColonist" FontSize="15" Margin="722,115,0,256" VerticalAlignment="Center" Text="{Binding Path=Model.ScientistColonist}"></TextBlock>
+        <TextBlock x:Name="crafterColonist" FontSize="15" Margin="722,145,0,226" VerticalAlignment="Center" Text="{Binding Path=Model.CrafterColonist}"></TextBlock>
+    </Grid>
+</Controls:MetroWindow>
