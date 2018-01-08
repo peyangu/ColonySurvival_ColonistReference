@@ -15,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-                      Icon="/ColonySurvivalCraftsmanManagement;component/Resource/fabicon.ico">
+                      Icon="/ColonySurvivalColonistReference;component/Resource/fabicon.ico">
     <Grid>
         <TextBlock Foreground="Blue" Margin="82,25,71,0" Opacity="{Binding Path=Model.WarterMarkOpacity}" VerticalAlignment="Top" Height="20" Text="steamLibrary/steamapps/common/Colony Survival/gamedata/savegames/各種セーブフォルダ/npc.jsonを選択"></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="82,25,0,0" TextWrapping="Wrap" Text="{Binding Model.JsonFilePath}" VerticalAlignment="Top" Height="20" Width="639"/>

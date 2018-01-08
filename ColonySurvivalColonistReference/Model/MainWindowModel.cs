@@ -568,7 +568,7 @@ namespace ColonySurvivalColonistReference.Model
 
         private void DisplayColonistInformation()
         {
-            if (!string.IsNullOrEmpty(JsonFilePath))
+            if (!string.IsNullOrEmpty(JsonFilePath) && JsonFilePath.IndexOf("npc.json") != -1)
             {
                 using (StreamReader r = new StreamReader(JsonFilePath))
                 {
