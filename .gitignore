@@ -115,3 +115,5 @@ ColonySurvivalColonistReference/bin/ColonySurvival -ColonistReference-/ColonySur
 ColonySurvivalColonistReference/bin/ColonySurvival -ColonistReference-/ColonySurvivalColonistReference.exe.config
 ColonySurvivalColonistReference/bin/ColonySurvival -ColonistReference-/ColonySurvivalColonistReference.exe
 ColonySurvivalColonistReference/obj/Release/Window1.g.i.cs
+.vs/config/applicationhost.config
+.vs/ColonySurvivalColonistReference/v15/.suo
