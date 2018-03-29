@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace ColonySurvivalColonistReference.Model
@@ -14,17 +15,17 @@ namespace ColonySurvivalColonistReference.Model
     public class MainWindowModel : ModelBase
     {
         #region プロパティ
-        private string _JsonFilePath = "";
-        public string JsonFilePath
+        private string _SaveFolderPath = "";
+        public string SaveFolderPath
         {
-            get { return _JsonFilePath; }
+            get { return _SaveFolderPath; }
             set
             {
-                if (_JsonFilePath != value)
+                if (_SaveFolderPath != value)
                 {
-                    _JsonFilePath = value;
+                    _SaveFolderPath = value;
 
-                    RaisePropertyChanged(nameof(JsonFilePath));
+                    RaisePropertyChanged(nameof(SaveFolderPath));
                 }
             }
         }
@@ -40,6 +41,21 @@ namespace ColonySurvivalColonistReference.Model
                     _WarterMarkOpacity = value;
 
                     RaisePropertyChanged(nameof(WarterMarkOpacity));
+                }
+            }
+        }
+
+        private int _TotalColonist = 0;
+        public int TotalColonist
+        {
+            get { return _TotalColonist; }
+            set
+            {
+                if (_TotalColonist != value)
+                {
+                    _TotalColonist = value;
+
+                    RaisePropertyChanged(nameof(TotalColonist));
                 }
             }
         }
@@ -538,10 +554,43 @@ namespace ColonySurvivalColonistReference.Model
                 }
             }
         }
+
+        private int _DiggerColonist = 0;
+        public int DiggerColonist
+        {
+            get { return _DiggerColonist; }
+            set
+            {
+                if (_DiggerColonist != value)
+                {
+                    _DiggerColonist = value;
+
+                    RaisePropertyChanged(nameof(DiggerColonist));
+                }
+            }
+        }
+
+        private int _BuilderColonist = 0;
+        public int BuilderColonist
+        {
+            get { return _BuilderColonist; }
+            set
+            {
+                if (_BuilderColonist != value)
+                {
+                    _BuilderColonist = value;
+
+                    RaisePropertyChanged(nameof(BuilderColonist));
+                }
+            }
+        }
         #endregion
 
-        OpenFileDialog dialog = new OpenFileDialog();
-        List<Localhost> npcList;
+        FolderBrowserDialog dialog = new FolderBrowserDialog();
+        List<NPC.Localhost> npcList;
+        List<ConstructionAreas.Localhost> constructionList;
+        string filePath = "";
+        bool isConstructionCount = false;
 
         public ICommand ReferenceButtonClickCommand { get; private set; }
 
@@ -555,12 +604,11 @@ namespace ColonySurvivalColonistReference.Model
 
         public void SelectJsonFile()
         {
-            dialog.Title = "ファイルを開く(npc.jsonの指定)";
-            dialog.Filter = "JSONファイル(.json)|*.json";
-            if (dialog.ShowDialog() == true)
+            dialog.ShowNewFolderButton = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 WarterMarkOpacity = 0;
-                JsonFilePath = dialog.FileName;
+                SaveFolderPath = dialog.SelectedPath;
 
                 DisplayColonistInformation();
             }
@@ -568,15 +616,29 @@ namespace ColonySurvivalColonistReference.Model
 
         private void DisplayColonistInformation()
         {
-            if (!string.IsNullOrEmpty(JsonFilePath) && JsonFilePath.IndexOf("npc.json") != -1)
+            filePath = SaveFolderPath + "\\areajobs\\constructionareas.json";
+
+            if (!string.IsNullOrEmpty(filePath))
             {
-                using (StreamReader r = new StreamReader(JsonFilePath))
+                using (StreamReader r = new StreamReader(filePath))
                 {
                     var json = r.ReadToEnd();
-                    npcList = JsonUtil.ReadJSON(json.Substring(18, json.Length - 19).Replace("\r\n", "").Replace("\t", ""));
+                    constructionList = JsonUtil.ReadJSONFromConstruction(json.Substring(33, json.Length - 55).Replace("\r\n", "").Replace("\t", ""));
+                }
+            }
+
+            filePath = SaveFolderPath + "\\npc.json";
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                using (StreamReader r = new StreamReader(filePath))
+                {
+                    var json = r.ReadToEnd();
+                    npcList = JsonUtil.ReadJSONFromNPC(json.Substring(18, json.Length - 19).Replace("\r\n", "").Replace("\t", ""));
+                    TotalColonist = npcList.Count;
                 }
 
-                foreach (Localhost n in npcList)
+                foreach (NPC.Localhost n in npcList)
                 {
                     switch (n.type.Replace("pipliz.", ""))
                     {
@@ -679,6 +741,15 @@ namespace ColonySurvivalColonistReference.Model
                         case "crafter":
                             CrafterColonist++;
                             break;
+                        case "constructor":
+                            // 掘削と建築で分岐 読み込み時初回のみ数える
+                            if (constructionList != null && !isConstructionCount)
+                            {
+                                BuilderColonist = constructionList.FindAll(x => x.arguments.constructionType.IndexOf("builder") != -1).Count;
+                                DiggerColonist = constructionList.FindAll(x => x.arguments.constructionType.IndexOf("digger") != -1).Count;
+                                isConstructionCount = true;
+                            }
+                            break;
                     }
                 }
             }
@@ -720,6 +791,8 @@ namespace ColonySurvivalColonistReference.Model
             GrinderColonist = 0;
             ScientistColonist = 0;
             CrafterColonist = 0;
+            DiggerColonist = 0;
+            BuilderColonist = 0;
 
             // 再表示
             DisplayColonistInformation();

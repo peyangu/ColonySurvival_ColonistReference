@@ -17,8 +17,8 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
                       Icon="/ColonySurvivalColonistReference;component/Resource/fabicon.ico">
     <Grid>
-        <TextBlock Foreground="Blue" Margin="82,25,71,0" Opacity="{Binding Path=Model.WarterMarkOpacity}" VerticalAlignment="Top" Height="20" Text="steamLibrary/steamapps/common/Colony Survival/gamedata/savegames/各種セーブフォルダ/npc.jsonを選択"></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="82,25,0,0" TextWrapping="Wrap" Text="{Binding Model.JsonFilePath}" VerticalAlignment="Top" Height="20" Width="639"/>
+        <TextBlock Foreground="Blue" Margin="82,25,71,0" Opacity="{Binding Path=Model.WarterMarkOpacity}" VerticalAlignment="Top" Height="20" Text="steamLibrary/steamapps/common/Colony Survival/gamedata/savegames/各種セーブフォルダを選択"></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="82,25,0,0" TextWrapping="Wrap" Text="{Binding Model.SaveFolderPath}" VerticalAlignment="Top" Height="20" Width="639"/>
         <Button Content="参照" HorizontalAlignment="Left" Margin="721,10,0,0" VerticalAlignment="Top" Width="61" Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth3"
 	Style="{DynamicResource MaterialDesignRaisedButton}" Command="{Binding Path=Model.ReferenceButtonClickCommand}"/>
         <Button Command="{Binding Path=Model.ReloadCommand}"
@@ -31,42 +31,45 @@
         </Button>
 
 
-        <Label x:Name="berryfarmer" FontSize="15" Margin="0,79,675,280" Height="30">ベリーの農家:</Label>
-        <Label x:Name="guardslingerday" FontSize="15" Margin="0,109,675,250" Height="30">スリング兵(昼):</Label>
-        <Label x:Name="guardbowday" FontSize="15" Margin="0,139,675,220" Height="30">弓兵(昼):</Label>
-        <Label x:Name="guardcrossbowday" FontSize="15" Margin="0,169,675,190" Height="30">クロスボウ兵(昼):</Label>
-        <Label x:Name="guardmatchlockday" FontSize="15" Margin="0,199,675,160" Height="30">火縄銃兵(昼):</Label>
-        <Label x:Name="guardslingernight" FontSize="15" Margin="0,229,675,130" Height="30">スリング兵(夜):</Label>
-        <Label x:Name="guardbownight" FontSize="15" Margin="0,259,675,100" Height="30">弓兵(夜):</Label>
-        <Label x:Name="guardcrossbownight" FontSize="15" Margin="0,289,675,70" Height="30">クロスボウ兵(夜):</Label>
-        <Label x:Name="guardmatchlocknight" FontSize="15" Margin="0,319,675,40" Height="30">火縄銃兵(夜):</Label>
-        <Label x:Name="minerjob" FontSize="15" Margin="0,349,675,10" Height="30">鉱員:</Label>
+        <Label x:Name="berryfarmer" FontSize="15" Margin="0,79,675,280" Height="30" Content="ベリーの農家:"></Label>
+        <Label x:Name="guardslingerday" FontSize="15" Margin="0,109,675,250" Height="30" Content="スリング兵(昼):"></Label>
+        <Label x:Name="guardbowday" FontSize="15" Margin="0,139,675,220" Height="30" Content="弓兵(昼):"></Label>
+        <Label x:Name="guardcrossbowday" FontSize="15" Margin="0,169,675,190" Height="30" Content="クロスボウ兵(昼):"></Label>
+        <Label x:Name="guardmatchlockday" FontSize="15" Margin="0,199,675,160" Height="30" Content="火縄銃兵(昼):"></Label>
+        <Label x:Name="guardslingernight" FontSize="15" Margin="0,229,675,130" Height="30" Content="スリング兵(夜):"></Label>
+        <Label x:Name="guardbownight" FontSize="15" Margin="0,259,675,100" Height="30" Content="弓兵(夜):"></Label>
+        <Label x:Name="guardcrossbownight" FontSize="15" Margin="0,289,675,70" Height="30" Content="クロスボウ兵(夜):"></Label>
+        <Label x:Name="guardmatchlocknight" FontSize="15" Margin="0,319,675,40" Height="30" Content="火縄銃兵(夜):"></Label>
+        <Label x:Name="minerjob" FontSize="15" Margin="0,349,675,10" Height="30" Content="鉱員:"></Label>
 
-        <Label x:Name="forester" FontSize="15" Margin="200,79,476,280" Height="30">林業者:</Label>
-        <Label x:Name="flaxfarmer" FontSize="15" Margin="200,109,476,250" Height="30">亜麻農家:</Label>
-        <Label x:Name="alkanetfarmer" FontSize="15" Margin="200,139,476,220" Height="30">アルカネット農家:</Label>
-        <Label x:Name="hollyhockfarmer" FontSize="15" Margin="200,169,476,190" Height="30">タチアオイ農家:</Label>
-        <Label x:Name="wolfsbanefarm" FontSize="15" Margin="200,199,476,160" Height="30">トリカブト農家:</Label>
-        <Label x:Name="wheatfarmer" FontSize="15" Margin="200,229,476,130" Height="30">小麦の農家:</Label>
-        <Label x:Name="dyer" FontSize="15" Margin="200,259,476,100" Height="30">染色師:</Label>
-        <Label x:Name="stonemason" FontSize="15" Margin="200,289,476,70" Height="30">石工:</Label>
-        <Label x:Name="gunsmithjob" FontSize="15" Margin="200,319,476,40" Height="30">鉄砲鍛冶:</Label>
-        <Label x:Name="merchant" FontSize="15" Margin="200,349,476,10" Height="30">店:</Label>
+        <Label x:Name="forester" FontSize="15" Margin="200,79,476,280" Height="30" Content="林業者:"></Label>
+        <Label x:Name="flaxfarmer" FontSize="15" Margin="200,109,476,250" Height="30" Content="亜麻農家:"></Label>
+        <Label x:Name="alkanetfarmer" FontSize="15" Margin="200,139,476,220" Height="30" Content="アルカネット農家:"></Label>
+        <Label x:Name="hollyhockfarmer" FontSize="15" Margin="200,169,476,190" Height="30" Content="タチアオイ農家:"></Label>
+        <Label x:Name="wolfsbanefarm" FontSize="15" Margin="200,199,476,160" Height="30" Content="トリカブト農家:"></Label>
+        <Label x:Name="wheatfarmer" FontSize="15" Margin="200,229,476,130" Height="30" Content="小麦の農家:"></Label>
+        <Label x:Name="dyer" FontSize="15" Margin="200,259,476,100" Height="30" Content="染色師:"></Label>
+        <Label x:Name="stonemason" FontSize="15" Margin="200,289,476,70" Height="30" Content="石工:"></Label>
+        <Label x:Name="gunsmithjob" FontSize="15" Margin="200,319,476,40" Height="30" Content="鉄砲鍛冶:"></Label>
+        <Label x:Name="merchant" FontSize="15" Margin="200,349,476,10" Height="30" Content="店:"></Label>
 
-        <Label x:Name="minter" FontSize="15" Margin="400,79,285,280" Height="30">造幣局:</Label>
-        <Label x:Name="tailor" FontSize="15" Margin="400,109,285,250" Height="30">仕立て屋:</Label>
-        <Label x:Name="technologist" FontSize="15" Margin="400,139,285,220" Height="30">技術者:</Label>
-        <Label x:Name="kilnjob" FontSize="15" Margin="400,169,288,190" Height="30">窯職人:</Label>
-        <Label x:Name="fineryforgejob" FontSize="15" Margin="400,199,288,160" Height="30">精製炉:</Label>
-        <Label x:Name="woodcutter" FontSize="15" Margin="400,229,288,130" Height="30">薪割り:</Label>
-        <Label x:Name="bloomeryjob" FontSize="15" Margin="400,259,288,100" Height="30">塊鉄炉:</Label>
-        <Label x:Name="metalsmithjob" FontSize="15" Margin="400,289,288,70" Height="30">青銅の金床:</Label>
-        <Label x:Name="smelter" FontSize="15" Margin="400,319,288,40" Height="30">炉:</Label>
-        <Label x:Name="baker" FontSize="15" Margin="400,349,288,10" Height="30">パン職人:</Label>
+        <Label x:Name="minter" FontSize="15" Margin="400,79,285,280" Height="30" Content="造幣局:"></Label>
+        <Label x:Name="tailor" FontSize="15" Margin="400,109,285,250" Height="30" Content="仕立て屋:"></Label>
+        <Label x:Name="technologist" FontSize="15" Margin="400,139,285,220" Height="30" Content="技術者:"></Label>
+        <Label x:Name="kilnjob" FontSize="15" Margin="400,169,288,190" Height="30" Content="窯職人:"></Label>
+        <Label x:Name="fineryforgejob" FontSize="15" Margin="400,199,288,160" Height="30" Content="精製炉:"></Label>
+        <Label x:Name="woodcutter" FontSize="15" Margin="400,229,288,130" Height="30" Content="薪割り:"></Label>
+        <Label x:Name="bloomeryjob" FontSize="15" Margin="400,259,288,100" Height="30" Content="塊鉄炉:"></Label>
+        <Label x:Name="metalsmithjob" FontSize="15" Margin="400,289,288,70" Height="30" Content="青銅の金床:"></Label>
+        <Label x:Name="smelter" FontSize="15" Margin="400,319,288,40" Height="30" Content="炉:"></Label>
+        <Label x:Name="baker" FontSize="15" Margin="400,349,288,10" Height="30" Content="パン職人:"></Label>
 
-        <Label x:Name="grinder" FontSize="15" Margin="600,79,88,280" Height="30">小麦粉生産者:</Label>
-        <Label x:Name="scientist" FontSize="15" Margin="600,109,88,250" Height="30">科学者:</Label>
-        <Label x:Name="crafter" FontSize="15" Margin="600,139,88,220" Height="30">クラフター:</Label>
+        <Label x:Name="grinder" FontSize="15" Margin="600,79,88,280" Height="30" Content="小麦粉生産者:"></Label>
+        <Label x:Name="scientist" FontSize="15" Margin="600,109,88,250" Height="30" Content="科学者:"></Label>
+        <Label x:Name="crafter" FontSize="15" Margin="600,139,88,220" Height="30" Content="クラフター:"></Label>
+        <Label x:Name="digger" FontSize="15" Margin="600,169,88,190" Height="30" Content="掘削労働者:"/>
+        <Label x:Name="constructor" FontSize="15" Margin="600,199,88,160" Height="30" Content="建築労働者:"/>
+        <Label x:Name="total" FontSize="15" Margin="576,349,112,10" Height="30" Content="全コロニスト:"/>
 
         <TextBlock x:Name="berryfarmerColonist" FontSize="15" Margin="122,85,600,286" VerticalAlignment="Center" Text="{Binding Path=Model.BerryfarmerColonist}"></TextBlock>
         <TextBlock x:Name="guardslingerdayColonist" FontSize="15" Margin="122,115,600,256" VerticalAlignment="Center" Text="{Binding Path=Model.GuardslingerdayColonist}"></TextBlock>
@@ -104,5 +107,8 @@
         <TextBlock x:Name="grinderColonist" FontSize="15" Margin="722,85,0,286" VerticalAlignment="Center" Text="{Binding Path=Model.GrinderColonist}"></TextBlock>
         <TextBlock x:Name="scientistColonist" FontSize="15" Margin="722,115,0,256" VerticalAlignment="Center" Text="{Binding Path=Model.ScientistColonist}"></TextBlock>
         <TextBlock x:Name="crafterColonist" FontSize="15" Margin="722,145,0,226" VerticalAlignment="Center" Text="{Binding Path=Model.CrafterColonist}"></TextBlock>
+        <TextBlock x:Name="diggerColonist" FontSize="15" Margin="722,175,0,196" VerticalAlignment="Center" Text="{Binding Model.DiggerColonist}"/>
+        <TextBlock x:Name="constructorColonist" FontSize="15" Margin="722,205,0,166" VerticalAlignment="Center" Text="{Binding Model.BuilderColonist}"/>
+        <TextBlock x:Name="TotalColonist" FontSize="20" Margin="685,349,10,10" VerticalAlignment="Center" Text="{Binding Model.TotalColonist}" Height="30"/>
     </Grid>
 </Controls:MetroWindow>

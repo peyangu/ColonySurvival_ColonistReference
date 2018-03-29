@@ -10,9 +10,14 @@ namespace ColonySurvivalColonistReference.Json
 {
     public static class JsonUtil
     {
-        public static List<Localhost> ReadJSON(string jsonText)
+        public static List<NPC.Localhost> ReadJSONFromNPC(string jsonText)
         {
-            return JsonConvert.DeserializeObject<List<Localhost>>(jsonText);
+            return JsonConvert.DeserializeObject<List<NPC.Localhost>>(jsonText);
+        }
+
+        public static List<ConstructionAreas.Localhost> ReadJSONFromConstruction(string jsonText)
+        {
+            return JsonConvert.DeserializeObject<List<ConstructionAreas.Localhost>>(jsonText);
         }
     }
 }
