@@ -618,7 +618,7 @@ namespace ColonySurvivalColonistReference.Model
         {
             filePath = SaveFolderPath + "\\areajobs\\constructionareas.json";
 
-            if (!string.IsNullOrEmpty(filePath))
+            if (File.Exists(filePath))
             {
                 using (StreamReader r = new StreamReader(filePath))
                 {
@@ -629,7 +629,7 @@ namespace ColonySurvivalColonistReference.Model
 
             filePath = SaveFolderPath + "\\npc.json";
 
-            if (!string.IsNullOrEmpty(filePath))
+            if (File.Exists(filePath))
             {
                 using (StreamReader r = new StreamReader(filePath))
                 {
@@ -752,6 +752,10 @@ namespace ColonySurvivalColonistReference.Model
                             break;
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("NPC.jsonが見つかりませんでした。選択しているフォルダは合っていますか？");
             }
         }
 
